@@ -1,0 +1,34 @@
+JAMES WHITFIELD, PhD
+Email: j.whitfield@university.edu | Phone: +1-617-555-0287
+Location: Boston, MA, USA
+
+PROFESSIONAL SUMMARY
+Academic public health researcher specializing in infectious disease modeling and
+health economics. Strong quantitative background with extensive publication record
+in high-impact journals. Seeking transition from academia to applied humanitarian work.
+
+EXPERIENCE
+
+Associate Professor of Public Health | Harvard T.H. Chan School of Public Health | 2019–Present
+- Principal investigator on NIH-funded grants totaling $4.2M for malaria transmission modeling
+- Supervise 5 PhD students and 3 postdoctoral fellows
+- Developed agent-based models predicting disease spread in urban populations
+- Teach courses on epidemiological methods and biostatistics
+
+Postdoctoral Research Fellow | Imperial College London | 2015–2019
+- Built mathematical models for influenza pandemic preparedness
+- Co-authored 12 publications in Lancet, BMJ, and Nature Communications
+
+EDUCATION
+PhD, Biostatistics — Johns Hopkins Bloomberg School of Public Health, 2015
+MS, Statistics — Stanford University, 2011
+
+SKILLS
+R, Python, SAS, machine learning, mathematical modeling, systematic reviews, grant writing
+Languages: English (native), Spanish (basic)
+
+PUBLICATIONS
+45+ peer-reviewed publications | h-index: 28
+
+NOTE: No field deployment experience. Research conducted exclusively in laboratory and
+office settings. Limited experience with community engagement or cross-cultural fieldwork.
