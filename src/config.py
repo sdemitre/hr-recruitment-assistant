@@ -17,6 +17,23 @@ NGO_MISSION = (
 )
 
 
+def _get_setting(name: str, default: str | None = None) -> str | None:
+    """Read config from environment variables or Streamlit Cloud secrets."""
+    value = os.getenv(name)
+    if value:
+        return value
+
+    try:
+        import streamlit as st
+
+        if name in st.secrets:
+            return str(st.secrets[name])
+    except Exception:
+        pass
+
+    return default
+
+
 @dataclass(frozen=True)
 class LLMConfig:
     provider: str
@@ -27,31 +44,32 @@ class LLMConfig:
 
     @classmethod
     def from_env(cls) -> LLMConfig:
-        provider = os.getenv("LLM_PROVIDER", "openai").lower().strip()
+        provider = (_get_setting("LLM_PROVIDER", "openai") or "openai").lower().strip()
         if provider not in {"openai", "anthropic"}:
             raise ValueError(
                 f"Invalid LLM_PROVIDER '{provider}'. Must be 'openai' or 'anthropic'."
             )
         return cls(
             provider=provider,
-            openai_api_key=os.getenv("OPENAI_API_KEY"),
-            openai_model=os.getenv("OPENAI_MODEL", "gpt-4o"),
-            anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"),
-            anthropic_model=os.getenv(
+            openai_api_key=_get_setting("OPENAI_API_KEY"),
+            openai_model=_get_setting("OPENAI_MODEL", "gpt-4o") or "gpt-4o",
+            anthropic_api_key=_get_setting("ANTHROPIC_API_KEY"),
+            anthropic_model=_get_setting(
                 "ANTHROPIC_MODEL", "claude-3-5-sonnet-20241022"
-            ),
+            )
+            or "claude-3-5-sonnet-20241022",
         )
 
     def validate(self) -> None:
         if self.provider == "openai" and not self.openai_api_key:
             raise ValueError(
                 "OPENAI_API_KEY is required when LLM_PROVIDER=openai. "
-                "Copy .env.example to .env and set your key."
+                "Set it in .env locally or in Streamlit Cloud secrets."
             )
         if self.provider == "anthropic" and not self.anthropic_api_key:
             raise ValueError(
                 "ANTHROPIC_API_KEY is required when LLM_PROVIDER=anthropic. "
-                "Copy .env.example to .env and set your key."
+                "Set it in .env locally or in Streamlit Cloud secrets."
             )
 
 

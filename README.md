@@ -76,6 +76,26 @@ Run with your own resume files:
 python cli.py --resume path/to/resume1.txt --resume path/to/resume2.pdf --resume path/to/resume3.docx --output results.json
 ```
 
+## Deploy (Streamlit Community Cloud)
+
+1. Push this repo to GitHub (already at `sdemitre/hr-recruitment-assistant`)
+2. Go to [share.streamlit.io](https://share.streamlit.io) and sign in with GitHub
+3. Click **Create app** and select:
+   - Repository: `sdemitre/hr-recruitment-assistant`
+   - Branch: `main`
+   - Main file path: `app.py`
+4. Open **Advanced settings → Secrets** and add:
+
+```toml
+LLM_PROVIDER = "openai"
+OPENAI_API_KEY = "sk-your-key-here"
+OPENAI_MODEL = "gpt-4o"
+```
+
+5. Click **Deploy**
+
+The app reads secrets from Streamlit Cloud or from a local `.env` file.
+
 ## Workflow
 
 ```
