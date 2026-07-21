@@ -34,6 +34,16 @@ def _get_setting(name: str, default: str | None = None) -> str | None:
     return default
 
 
+def _get_int_setting(name: str, default: int) -> int:
+    raw = _get_setting(name)
+    if raw is None:
+        return default
+    try:
+        return int(raw)
+    except ValueError as exc:
+        raise ValueError(f"{name} must be an integer, got {raw!r}.") from exc
+
+
 @dataclass(frozen=True)
 class LLMConfig:
     provider: str
@@ -41,6 +51,7 @@ class LLMConfig:
     openai_model: str
     anthropic_api_key: str | None
     anthropic_model: str
+    anthropic_max_tokens: int
 
     @classmethod
     def from_env(cls) -> LLMConfig:
@@ -55,9 +66,12 @@ class LLMConfig:
             openai_model=_get_setting("OPENAI_MODEL", "gpt-4o") or "gpt-4o",
             anthropic_api_key=_get_setting("ANTHROPIC_API_KEY"),
             anthropic_model=_get_setting(
-                "ANTHROPIC_MODEL", "claude-3-5-sonnet-20241022"
+                "ANTHROPIC_MODEL", "claude-sonnet-4-6"
             )
-            or "claude-3-5-sonnet-20241022",
+            or "claude-sonnet-4-6",
+            anthropic_max_tokens=_get_int_setting(
+                "ANTHROPIC_MAX_TOKENS", 16_384
+            ),
         )
 
     def validate(self) -> None:

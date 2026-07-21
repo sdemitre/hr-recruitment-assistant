@@ -84,6 +84,11 @@ Generate:
    - Summary, strengths, and weaknesses for each candidate
    - Explicit statement that the final hiring decision rests with the human manager
 
+Generate exactly these JSON field names:
+1. rejection_emails (2 objects): each with candidate_name, subject, body
+2. advancement_email (1 object): candidate_name, subject, body
+3. manager_notification (1 object): subject, body only
+
 Use professional NGO tone throughout."""
 
     return llm.generate_structured(

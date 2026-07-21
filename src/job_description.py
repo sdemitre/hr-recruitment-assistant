@@ -32,7 +32,7 @@ Scientist" position at {NGO_NAME}.
 
 Include:
 1. A compelling summary of the role's impact on humanitarian rescue missions
-2. 8-10 specific responsibilities covering field research, data collection, community
+2. 8 specific responsibilities covering field research, data collection, community
    engagement, outbreak response, and reporting to international health bodies
 3. Required qualifications (MD/PhD in public health/epidemiology, field deployment experience, etc.)
 4. Preferred qualifications (humanitarian NGO experience, languages, GIS/biostatistics)
@@ -40,7 +40,9 @@ Include:
    crisis management, cultural competency, and resilience
 6. A full_text field with the complete formatted job posting ready to share with candidates
 
-The role involves 60-70% field deployment to remote regions with limited infrastructure."""
+The role involves 60-70% field deployment to remote regions with limited infrastructure.
+
+Keep each list item concise (one sentence). Keep full_text under 1200 words."""
 
     return llm.generate_structured(
         system_prompt=SYSTEM_PROMPT,

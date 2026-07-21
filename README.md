@@ -15,7 +15,7 @@ The agent automates resume screening, candidate ranking, and communication draft
 ## Requirements
 
 - Python 3.10+
-- OpenAI API key (`gpt-4o`) **or** Anthropic API key (`claude-3-5-sonnet`)
+- OpenAI API key (`gpt-4o`) **or** Anthropic API key (`claude-sonnet-4-6`)
 
 ## Installation
 
@@ -46,7 +46,7 @@ OPENAI_MODEL=gpt-4o
 
 # Anthropic (alternative)
 ANTHROPIC_API_KEY=sk-ant-your-key-here
-ANTHROPIC_MODEL=claude-3-5-sonnet-20241022
+ANTHROPIC_MODEL=claude-sonnet-4-6
 ```
 
 ## Usage
